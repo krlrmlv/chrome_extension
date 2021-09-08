@@ -1,0 +1,134 @@
+.getInfo-popup {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 99999999;
+  height: 100%;
+  display: flex;
+}
+
+.getInfo-popup * {
+  box-sizing: border-box;
+}
+
+.getInfo-popup__bg {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgb(26 26 26 / 70%);
+  cursor: pointer;
+}
+
+.getInfo-popup__content {
+  padding: 40px 60px;
+  background-color: papayawhip;
+  font-family: monospace;
+  width: 700px;
+  height: auto;
+  position: relative;
+  margin: auto;
+  z-index: 99999999;
+  max-height: 90%;
+  overflow-y: auto;
+  animation: showPP .5s cubic-bezier(0, 0, 0.2, 1) 0s 1;
+}
+
+@keyframes showPP {
+  from{
+    clip-path: inset(50%);
+    opacity: 0;
+  }
+  to{
+    clip-path: inset(0%);
+    opacity: 1;
+  }
+}
+
+.getInfo-popup__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: none;
+  border: none;
+}
+
+.getInfo-popup__close span {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: rotate(45deg);
+  transition: .3s linear;
+}
+
+.getInfo-popup__close span:last-child {
+  transform: rotate(-45deg);
+}
+
+.getInfo-popup__close::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0);
+  transform: scale(0);
+  transition: .7s cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+.getInfo-popup__close:hover:before {
+  transform: scale(1) rotate(90deg);
+  border-radius: 50%;
+}
+
+
+.getInfo-popup__close:hover span {
+  background-color: white;
+  width: 50%;
+}
+
+
+.table {
+  margin: 20px 0;
+}
+
+.table-head {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.table-body {
+  font-size: 15px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-cell {
+  width: 50%;
+  padding: 10px;
+  border-bottom: 1px solid #adadad;
+}
+
+.table-body .table-row:last-child .table-cell {
+  border-bottom: none;
+}
