@@ -2,19 +2,31 @@
   "manifest_version": 2,
   "name": "GetInfo",
   "description": "My first extension that shows data from window.navigator to the user",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
   },
+  "permissions": [
+    "desktopCapture",
+    "tabs",
+    "downloads"
+  ],
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
-      "js": ["content.js"]
+      "js": [
+        "content.js"
+      ]
     }
   ],
   "browser_action": {
-    "default_icon": "coding.png"
+    "default_icon": "coding.png",
+    "default_title": "GetInfo",
+    "default_popup": "hello.html"
   }
 }

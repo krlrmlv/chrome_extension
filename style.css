@@ -1,36 +1,47 @@
-.getInfo-popup {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 99999999;
-  height: 100%;
-  display: flex;
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+
+:root{
+  --gradientBg: linear-gradient(45deg, rgb(113 200 226) 0%, #FAC5DE 70%);
+  --colorBlack: #262626;
+  --colorWhite: white;
+  --colorBorder: white;
+}
+
+body::-webkit-scrollbar,body::-webkit-scrollbar-track {
+	background-color: transparent
+}
+
+body::-webkit-scrollbar {
+	width: 6px
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: var(--colorBlack);
+	border-radius: 5px
+}
+
+a {
+	color: rgb(255 255 255);
+	font-weight: 600;
+	transition: .7s;
+}
+
+a:hover {
+	opacity: .5;
+	text-decoration-color: transparent;
+}
+
+a:active{
+  transform: scale(.9);
 }
 
 .getInfo-popup * {
   box-sizing: border-box;
 }
 
-.getInfo-popup__bg {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  background-color: rgb(26 26 26 / 70%);
-  cursor: pointer;
-}
-
 .getInfo-popup__content {
   padding: 40px 60px;
-  background-color: papayawhip;
+  background: var(--gradientBg);
   font-family: monospace;
   width: 700px;
   height: auto;
@@ -44,7 +55,7 @@
 
 @keyframes showPP {
   from{
-    clip-path: inset(50%);
+    clip-path: inset(0% 0% 100% 0%);
     opacity: 0;
   }
   to{
@@ -73,9 +84,9 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: black;
+  background-color: var(--colorBlack);
   transform: rotate(45deg);
-  transition: .3s linear;
+  transition: .7s linear;
 }
 
 .getInfo-popup__close span:last-child {
@@ -87,7 +98,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(0 0 0);
+  background-color: var(--colorBlack);
   transform: scale(0);
   transition: .7s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -100,7 +111,7 @@
 
 
 .getInfo-popup__close:hover span {
-  background-color: white;
+  background-color: var(--colorWhite);
   width: 50%;
 }
 
@@ -109,12 +120,15 @@
 	font-size: 40px;
 	font-weight: bold;
 	font-style: normal;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .getInfo-popup p {
 	font-size: 18px;
 	font-weight: normal;
 	font-style: normal;
+  margin: 0;
 }
 
 .getInfo-popup__main {
@@ -146,7 +160,7 @@
 .table-cell {
 	width: 50%;
 	padding: 14px 10px;
-	border-bottom: 1px solid rgb(173 173 173);
+	border-bottom: 1px solid var(--colorBorder);
 	font-size: 16px;
 	font-weight: normal;
 }
@@ -159,6 +173,25 @@
 .table-body .table-row:last-child .table-cell {
   border-bottom: none;
 }
+
+.get-sreen {
+	background: transparent;
+	border: 2px solid var(--colorBlack);
+	padding: 10px;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+	transition: .7s;
+	width: 100%;
+}
+
+.get-sreen:hover {
+	border-color: white;
+	color: whitesmoke;
+	background-color: rgb(0 0 0 / 30%);
+}
+
 
 .getInfo-popup__footer {
 	font-size: 16px;

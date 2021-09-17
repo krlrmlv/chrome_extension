@@ -1,49 +1,7 @@
-
-const {
-  connection,
-  cookieEnabled,
-  credentials,
-  deviceMemory,
-  doNotTrack,
-  geolocation,
-  hardwareConcurrency,
-  hid,
-  keyboard,
-  language,
-  languages,
-  locks,
-  managed,
-  maxTouchPoints,
-  mediaCapabilities,
-  mediaDevices,
-  mediaSession,
-  mimeTypes,
-  MimeTypeArray,
-  onLine,
-  permissions,
-  platform,
-  plugins,
-  presentation,
-  product,
-  productSub,
-  scheduling,
-  serial,
-  serviceWorker,
-  storage,
-  usb,
-  userActivation,
-  userAgent,
-  userAgentData,
-  vendor,
-  vendorSub,
-  wakeLock,
-  webdriver,
-  webkitPersistentStorage,
-  webkitTemporaryStorage,
-  xr
-} = window.navigator;
-
-const table = document.getElementById("table");
+const ppId = "getInfo";
+const ppTable = "getInfo-table";
+const closeElements = [document.querySelector(".getInfo-popup__close")];
+const screenButton = document.querySelector(".get-sreen");
 
 function template(name, value) {
   let t = document.createElement("div");
@@ -52,35 +10,27 @@ function template(name, value) {
   return t
 }
 
-let arr = [];
-let bat = navigator.getBattery();
+function drawPp(valuesArray) {
+  let table = document.getElementById(ppTable)
+  valuesArray.forEach(e => table.appendChild(template(e.name, e.value)))
+}
 
+function closePP(){
+  window.close();
+}
 
-Promise.all([bat]).then(values => {
+chrome.runtime.sendMessage({ "message": "popup_shown" });
 
-  console.log(values);
-
-  arr = [
-    {
-      name: "Window width",
-      value: window.innerWidth
-    },
-    {
-      name: "Window height",
-      value: window.innerHeight
-    },
-    {
-      name: "Connection",
-      value: connection.effectiveType
-    },
-    {
-      name: "Battery charging",
-      value: values[0].charging
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    if (request.message === "content__info") {
+      drawPp(request.arr);
     }
-  ];
+  }
+);
 
-  arr.forEach((element, index) => {
-    table.appendChild(template(element.name, element.value))
-  });
+closeElements.forEach((e, i) => {
+  e.addEventListener("click", closePP, false);
+});
 
-})
+screenButton.addEventListener("click", ()=>chrome.runtime.sendMessage({ "message": "take_screen" }), false);

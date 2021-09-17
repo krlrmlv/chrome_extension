@@ -10,25 +10,35 @@
 </head>
 
 <body>
-  <header>
-    <h1>GetInfo</h1>
-    <p>Extension that shows data from window.navigator to the user</p>
-  </header>
-  <main>
-    <div class="table">
-      <div class="table-head">
-        <div class="table-row">
-          <div class="table-cell">Name</div>
-          <div class="table-cell">Value</div>
+  <div class="getInfo-popup">
+    <div class="getInfo-popup__content">
+      <button type="button" class="getInfo-popup__close">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="getInfo-popup__header">
+        <h1>GetInfo</h1>
+        <p>Extension that shows data from window.navigator to the user</p>
+      </div>
+      <div class="getInfo-popup__main">
+        <div class="table">
+          <div class="table-head">
+            <div class="table-row">
+              <div class="table-cell">Name</div>
+              <div class="table-cell">Value</div>
+            </div>
+          </div>
+          <div class="table-body" id="getInfo-table">
+          </div>
         </div>
+        <button class="get-sreen" type="button">Take a screenshot</button>
       </div>
-      <div class="table-body" id="table">
-      </div>
+      <a href="tg://resolve?domain=krlrmlv" class="getInfo-popup__footer">
+        author: @krlrmlv
+      </a>
     </div>
-  </main>
-  <footer>
-    author: @krlrmlv
-  </footer>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 
