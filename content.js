@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener(
       let bat = navigator.getBattery();
 
 
-      Promise.all([bat]).then(values => {
+      Promise.allSettled([bat]).then(values => {
 
         arr = [
           {
@@ -50,7 +50,11 @@ chrome.runtime.onMessage.addListener(
           },
           {
             name: "User agent",
-            value: `${userAgentData.brands[0].brand}, version:${userAgentData.brands[0].version}`
+            value: userAgentData.brands.length ? `${userAgentData.brands[0].brand}, version:${userAgentData.brands[0].version}` : "Unknown"
+          },
+          {
+            name: "Is mobile?",
+            value: userAgentData.mobile
           },
         ];
 
